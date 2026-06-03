@@ -7,7 +7,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Custom CSS for a nice cannabis/green theme
+# Custom CSS
 st.markdown("""
 <style>
     .main { background-color: #0f1a0f; color: #e0f0e0; }
@@ -18,12 +18,6 @@ st.markdown("""
         font-weight: bold;
         border-radius: 8px;
     }
-    .card {
-        background-color: #1a2a1a;
-        padding: 20px;
-        border-radius: 12px;
-        margin-bottom: 20px;
-    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -33,7 +27,7 @@ st.subheader("Premium Cannabis • Living Soil • Small Batch")
 
 st.markdown("---")
 
-# Hero Section
+# Hero
 col1, col2 = st.columns([3, 1])
 with col1:
     st.markdown("""
@@ -46,7 +40,7 @@ with col2:
 
 st.markdown("---")
 
-# Navigation Tabs
+# Tabs
 tab1, tab2, tab3, tab4 = st.tabs(["🌿 Our Strains", "🧪 Amendments & Tea", "🌱 Clones", "🍫 Edibles (Soon)"])
 
 with tab1:
@@ -54,13 +48,13 @@ with tab1:
     c1, c2 = st.columns(2)
     
     with c1:
-        st.image("https://picsum.photos/id/1015/600/400", use_container_width=True)
+        st.image("https://picsum.photos/id/1015/600/400", width="stretch")
         st.markdown("**Nicole Kush**")
         st.caption("Indica-Dominant • Earthy, Chocolate, Pine • 22-26% THC")
         st.write("Our flagship strain. Dense buds, relaxing effects.")
 
     with c2:
-        st.image("https://picsum.photos/id/201/600/400", use_container_width=True)
+        st.image("https://picsum.photos/id/201/600/400", width="stretch")
         st.markdown("**Lemon Haze Auto**")
         st.caption("Sativa-Dominant • Bright Lemon & Haze • 18-23% THC")
         st.write("Fast autoflower, great for daytime use.")
@@ -112,5 +106,3 @@ Small-batch • Regenerative • Community Focused
 
 *Always comply with your local cannabis laws.*
 """)
-
-st.caption("Simplified & optimized for Streamlit Cloud")
