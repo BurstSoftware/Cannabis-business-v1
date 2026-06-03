@@ -1,83 +1,116 @@
 import streamlit as st
-from PIL import Image
-import base64
 
 st.set_page_config(
-    page_title="Nicole's Garden | Cannabis & Living Soil",
+    page_title="Nicole's Garden",
     page_icon="🌱",
-    layout="wide",
-    initial_sidebar_state="expanded"
+    layout="centered",
+    initial_sidebar_state="collapsed"
 )
 
-# Custom CSS
+# Custom CSS for a nice cannabis/green theme
 st.markdown("""
 <style>
     .main { background-color: #0f1a0f; color: #e0f0e0; }
-    .stButton>button { background-color: #4ade80; color: #0f1a0f; font-weight: bold; }
-    .strain-card { background: #1a2a1a; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; }
+    h1, h2, h3 { color: #90ee90; }
+    .stButton>button {
+        background-color: #4ade80;
+        color: #0f1a0f;
+        font-weight: bold;
+        border-radius: 8px;
+    }
+    .card {
+        background-color: #1a2a1a;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+    }
 </style>
 """, unsafe_allow_html=True)
 
+# Header
 st.title("🌱 Nicole's Garden")
-st.subheader("Premium Cannabis • Regenerative Soil • Small Batch")
+st.subheader("Premium Cannabis • Living Soil • Small Batch")
 
 st.markdown("---")
 
-col1, col2 = st.columns([3,2])
+# Hero Section
+col1, col2 = st.columns([3, 1])
 with col1:
-    st.markdown("### Our Mission")
-    st.write("""
-    We grow **Nicole Kush** and **Lemon Haze Auto** using living soil methods. 
-    We craft premium soil teas & amendments, sell healthy clones, and are pursuing our commissary license to offer artisanal edibles.
+    st.markdown("""
+    **Woman-led regenerative cannabis collective**  
+    Growing **Nicole Kush** & **Lemon Haze Auto** using living soil methods.  
+    We make soil teas, sell clones, and are pursuing our commissary license for edibles.
     """)
-
 with col2:
-    st.success("**Currently Available**\n\n• Nicole Kush Clones\n• Lemon Haze Auto Clones\n• Bloom Booster Tea\n• Super Soil Top-Dress")
+    st.success("**Now Available**\n\n• Clones\n• Soil Amendments")
 
 st.markdown("---")
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Strains", "Amendments & Tea", "Clones", "Edibles (Soon)", "Shop"])
+# Navigation Tabs
+tab1, tab2, tab3, tab4 = st.tabs(["🌿 Our Strains", "🧪 Amendments & Tea", "🌱 Clones", "🍫 Edibles (Soon)"])
 
 with tab1:
-    col_a, col_b = st.columns(2)
-    with col_a:
-        st.image("https://picsum.photos/id/1015/800/500", caption="Nicole Kush")
-        st.subheader("Nicole Kush")
-        st.write("**Indica-Dominant** • Earthy, chocolate, pine • 22-26% THC")
-    with col_b:
-        st.image("https://picsum.photos/id/201/800/500", caption="Lemon Haze Auto")
-        st.subheader("Lemon Haze Auto")
-        st.write("**Sativa-Dominant** • Bright citrus & haze • 18-23% THC • Fast autoflower")
+    st.subheader("Signature Strains")
+    c1, c2 = st.columns(2)
+    
+    with c1:
+        st.image("https://picsum.photos/id/1015/600/400", use_container_width=True)
+        st.markdown("**Nicole Kush**")
+        st.caption("Indica-Dominant • Earthy, Chocolate, Pine • 22-26% THC")
+        st.write("Our flagship strain. Dense buds, relaxing effects.")
+
+    with c2:
+        st.image("https://picsum.photos/id/201/600/400", use_container_width=True)
+        st.markdown("**Lemon Haze Auto**")
+        st.caption("Sativa-Dominant • Bright Lemon & Haze • 18-23% THC")
+        st.write("Fast autoflower, great for daytime use.")
 
 with tab2:
     st.subheader("Hand-Crafted Soil Amendments")
     c1, c2 = st.columns(2)
+    
     with c1:
-        st.metric("Bloom Booster Tea", "$28 / gal", "Ships weekly")
+        st.markdown("**Bloom Booster Tea**")
+        st.write("Compost tea for flowering stage. Rich in microbes & phosphorus.")
+        st.metric(label="", value="$28 / 1 gal")
+    
     with c2:
-        st.metric("Super Soil Top-Dress", "$35 / 5lb", "Organic blend")
-    st.info("All products made with regenerative ingredients: worm castings, kelp, neem, crustacean meal, etc.")
+        st.markdown("**Super Soil Top-Dress**")
+        st.write("Organic blend: worm castings, kelp, neem & more.")
+        st.metric(label="", value="$35 / 5 lb bag")
+
+    st.info("All amendments are made in small batches using regenerative ingredients.")
 
 with tab3:
     st.subheader("Clones For Sale")
-    st.write("**Nicole Kush** — $25 each (min 4)")
-    st.write("**Lemon Haze Auto** — $20 each (min 4)")
-    if st.button("Reserve Clones"):
-        st.success("Thank you! We'll contact you shortly for pickup/delivery details.")
+    st.markdown("""
+    **Nicole Kush Clones** — $25 each (minimum 4)  
+    **Lemon Haze Auto Clones** — $20 each (minimum 4)
+    """)
+    
+    if st.button("🛒 Reserve Clones Now", type="primary"):
+        st.success("Thank you! We'll contact you soon with availability and pickup/delivery options.")
 
 with tab4:
-    st.subheader("Commissary License In Progress")
-    st.write("Coming soon: Lemon Haze Gummies, Nicole Kush Chocolate, Infused Honey & Tinctures")
-    email = st.text_input("Get notified when edibles launch")
-    if st.button("Sign Up"):
-        st.balloons()
-        st.success("You're on the list!")
-
-with tab5:
-    st.subheader("Shop Now")
-    st.write("Pre-orders open for amendments and clones.")
-    st.button("🛒 Go to Full Shop", type="primary")
+    st.subheader("Edibles — Commissary License In Progress")
+    st.write("Coming soon: Gummies, Chocolate Bars, Infused Honey & Tinctures made with our own flower.")
+    
+    email = st.text_input("Email Address", placeholder="you@email.com")
+    if st.button("Notify Me When Edibles Launch"):
+        if email:
+            st.balloons()
+            st.success("You're on the list! We'll notify you when we launch.")
+        else:
+            st.warning("Please enter your email.")
 
 st.markdown("---")
-st.caption("Nicole's Garden © 2026 • Woman-led • Regenerative Cannabis Collective")
-st.caption("Always follow your local laws and regulations.")
+
+# Footer
+st.markdown("""
+**Nicole's Garden © 2026**  
+Small-batch • Regenerative • Community Focused  
+
+*Always comply with your local cannabis laws.*
+""")
+
+st.caption("Simplified & optimized for Streamlit Cloud")
